@@ -27,7 +27,7 @@ class Program
                     break;
 
                     case "2":
-                    DisplayTasks();
+                    DisplayTasksWithColors();
                     break;  
 
                     case"3":
@@ -80,7 +80,7 @@ class Program
         Console.WriteLine("Task added successfully!");
     }
 
-    static void DisplayTasks()
+    static void DisplayTasksWithColors()
     {
         if (tasks.Count == 0)
         {
@@ -90,10 +90,27 @@ class Program
         for (int i = 0; i < tasks.Count; i++)
         {
             var task = tasks[i];
-            Console.WriteLine($"{i}. Title {task.Title}, Due Date: {task.DueDate.ToShortDateString()}, Completed: {task.IsCompleted}");
+            switch (task.Category.ToLower())
+            {
+
+                case "personal":
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    break;
+                case "work":
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    break;
+                case "study":
+                    Console.ForegroundColor = ConsoleColor.Blue;
+                    break;
+                default:
+                    Console.ForegroundColor = ConsoleColor.White;
+                    break;
+            }
+
+            Console.WriteLine($"{i}. Title: {task.Title}, Due Date: {task.DueDate.ToShortDateString()}, Completed: {task.IsCompleted}, Category: {task.Category}");
+            Console.ResetColor();
         }
     }
-
     static void MarkTaskCompleted()
     {
         Console.WriteLine("Enter the index of the task to mark as completed: ");
