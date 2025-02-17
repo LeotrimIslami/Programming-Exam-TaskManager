@@ -91,7 +91,10 @@ class Program
         Console.WriteLine("Enter the index of the task to mark as completed: ");
         if (!int.TryParse(Console.ReadLine(), out int index) || index < 0 || index >= tasks.Count)
         {
-            Console.WriteLine("Task Marked as completed!");
+            Console.WriteLine("TInvalid index!");
+            return;
         }
+        tasks[index].IsCompleted = true;
+        Console.WriteLine("Task marked as completed!");
     }
 }
