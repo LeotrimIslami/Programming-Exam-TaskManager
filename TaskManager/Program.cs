@@ -48,6 +48,19 @@ class Program
         }
     }
 
+    static string GetValidCategory()
+    {
+        while (true)
+        {
+            Console.Write("Enter category (Personal, Work, Study): ");
+            string category = Console.ReadLine().ToLower();
+            if (category == "personal" || category == "work" || category == "study")
+        {
+                return category;
+            }
+            Console.WriteLine("Invalid category! Please choose from Personal, Work, or Study.");
+        }
+    }
     static void AddTask()
     {
         Console.Write("Enter title: ");
@@ -68,13 +81,15 @@ class Program
             return;
         }
 
+        string category = GetValidCategory();
+
         tasks.Add(new TaskItem
         {
             Title = title,
             Description = description,
             DueDate = dueDate,
             IsCompleted = false,
-            Category = "Personal"
+            Category = category
         });
 
         Console.WriteLine("Task added successfully!");
