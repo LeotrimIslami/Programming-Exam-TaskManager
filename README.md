@@ -26,3 +26,8 @@ Data is automatically saved to tasks.txt when exiting
 📂 File Storage
 Tasks are automatically saved to tasks.txt in the project folder.
 If the file doesn't exist, it will be created when you exit the program.
+
+
+![Task Manager Screenshot](./Images/TaskManager.png)
+
+
