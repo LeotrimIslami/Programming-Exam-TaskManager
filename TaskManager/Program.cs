@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
 
 class Program
 {
     static List<TaskItem> tasks = new List<TaskItem>();
     static void Main(string[] args)
     {
+        LoadTasks();
+
         while (true)
         {
             Console.WriteLine("- Task Manager - ");
@@ -30,6 +33,11 @@ class Program
                     case"3":
                     MarkTaskCompleted();
                     break;
+
+                    case "4":
+                        SaveTasks();
+                    return;
+
                 default:
                     Console.WriteLine("Invalid option!");
                     break;
@@ -91,10 +99,45 @@ class Program
         Console.WriteLine("Enter the index of the task to mark as completed: ");
         if (!int.TryParse(Console.ReadLine(), out int index) || index < 0 || index >= tasks.Count)
         {
-            Console.WriteLine("TInvalid index!");
+            Console.WriteLine("Invalid index!");
             return;
         }
         tasks[index].IsCompleted = true;
         Console.WriteLine("Task marked as completed!");
+    }
+
+
+    static string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", "..", "..", "tasks.txt");
+    static void SaveTasks()
+    {
+        using (StreamWriter writer = new StreamWriter(filePath))
+        {
+            foreach (var task in tasks)
+            {
+                writer.WriteLine($"{task.Title}|{task.Description}|{task.DueDate}|{task.IsCompleted}|{task.Category}");
+            }
+        }
+        Console.WriteLine("Tasks saved successfully!");
+    }
+
+    static void LoadTasks()
+    {
+        if (File.Exists(filePath))
+        {
+            string[] lines = File.ReadAllLines(filePath);
+            foreach (var line in lines)
+            {
+                string[] parts = line.Split('|');
+                tasks.Add(new TaskItem
+                {
+                    Title = parts[0],
+                    Description = parts[1],
+                    DueDate = DateTime.Parse(parts[2]),
+                    IsCompleted = bool.Parse(parts[3]),
+                    Category = parts[4]
+                });
+            }
+        }
+        Console.WriteLine("Tasks loaded successfully!");
     }
 }
