@@ -12,6 +12,9 @@ class Program
             Console.WriteLine("- Task Manager - ");
             Console.WriteLine("1. Add Task");
             Console.WriteLine("2. Display Tasks");
+            Console.WriteLine("3. Mark Task as Completed");
+            Console.WriteLine("4. Exit");
+            Console.Write("Choose an option: ");
             string choice = Console.ReadLine();
 
             switch (choice)
@@ -23,6 +26,10 @@ class Program
                     case "2":
                     DisplayTasks();
                     break;  
+
+                    case"3":
+                    MarkTaskCompleted();
+                    break;
                 default:
                     Console.WriteLine("Invalid option!");
                     break;
@@ -76,6 +83,15 @@ class Program
         {
             var task = tasks[i];
             Console.WriteLine($"{i}. Title {task.Title}, Due Date: {task.DueDate.ToShortDateString()}, Completed: {task.IsCompleted}");
+        }
+    }
+
+    static void MarkTaskCompleted()
+    {
+        Console.WriteLine("Enter the index of the task to mark as completed: ");
+        if (!int.TryParse(Console.ReadLine(), out int index) || index < 0 || index >= tasks.Count)
+        {
+            Console.WriteLine("Task Marked as completed!");
         }
     }
 }
