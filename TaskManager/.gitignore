@@ -1,0 +1,10 @@
+# Ignore Visual Studio and .NET build files
+.vs/
+
+obj/
+TaskManager/obj/
+TaskManager/bin/
+*.cache
+*.editorconfig
+*.nuget.*
+project.assets.json
