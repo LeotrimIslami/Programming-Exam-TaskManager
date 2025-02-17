@@ -31,3 +31,12 @@ If the file doesn't exist, it will be created when you exit the program.
 ![Task Manager Screenshot](./Images/TaskManager.png)
 
 
+
+
+##Mesime te Mesuara
+✅ Krijimi i nje aplikacioni te menaxhimit te taskeve
+✅ Implementimi i funksionalitetit si shtimi, shfaqja dhe perfundimi i taskeve
+
+##Sfidat
+1️⃣ Zgjidhja e gabimeve dhe debugimi i funksioneve të aplikacionit.
+2️⃣ Menaxhimi i ruajtjes se dhenave.
