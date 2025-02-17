@@ -11,6 +11,7 @@ class Program
         {
             Console.WriteLine("- Task Manager - ");
             Console.WriteLine("1. Add Task");
+            Console.WriteLine("2. Display Tasks");
             string choice = Console.ReadLine();
 
             switch (choice)
@@ -18,6 +19,10 @@ class Program
                 case "1":
                     AddTask();
                     break;
+
+                    case "2":
+                    DisplayTasks();
+                    break;  
                 default:
                     Console.WriteLine("Invalid option!");
                     break;
@@ -58,5 +63,19 @@ class Program
         });
 
         Console.WriteLine("Task added successfully!");
+    }
+
+    static void DisplayTasks()
+    {
+        if (tasks.Count == 0)
+        {
+            Console.WriteLine("No tasks available.");
+            return;
+        }
+        for (int i = 0; i < tasks.Count; i++)
+        {
+            var task = tasks[i];
+            Console.WriteLine($"{i}. Title {task.Title}, Due Date: {task.DueDate.ToShortDateString()}, Completed: {task.IsCompleted}");
+        }
     }
 }
