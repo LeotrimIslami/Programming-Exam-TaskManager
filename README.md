@@ -1,25 +1,25 @@
-### Programming-Exam-TaskManager
+## Programming-Exam-TaskManager
 
-### 1. Clone the repository:
+## 1. Clone the repository:
 
    git clone https://github.com/LeotrimIslami/Programming-Exam-TaskManager.git
    cd Programming-Exam-TaskManager/TaskManager
    
- ### 📌 Usage
+ ## 📌 Usage
 🔧 Build and Run the Application
-# 1️⃣ Open the Project in Visual Studio
+ 1️⃣ Open the Project in Visual Studio
 Launch Visual Studio and open the solution (.sln file).
-# 2️⃣ Build the Project
+ 2️⃣ Build the Project
 In the Toolbar, click Build → Build Solution (Ctrl + Shift + B).
 Ensure there are no errors before running.
-# 3️⃣ Run the Application
+ 3️⃣ Run the Application
 Press F5 to run with debugging or Ctrl + F5 to run without debugging.
 The console will open, showing the Task Manager menu.
 
-### Use the menu options:
-# ✅ Add Task: Follow prompts to create a new task
-# ✅ List Tasks: View all tasks with colored categories
-# ✅ Mark Complete: Update task status by index
+## Use the menu options:
+ ✅ Add Task: Follow prompts to create a new task
+ ✅ List Tasks: View all tasks with colored categories
+ ✅ Mark Complete: Update task status by index
 ✅ Exit: Save changes and quit
 Data is automatically saved to tasks.txt when exiting
 
@@ -33,10 +33,10 @@ If the file doesn't exist, it will be created when you exit the program.
 
 
 
-### Mesova
-# ✅ Krijimi i nje aplikacioni te menaxhimit te taskeve
-# ✅ Implementimi i funksionalitetit si shtimi, shfaqja dhe perfundimi i taskeve
+## Mesova
+ ✅ Krijimi i nje aplikacioni te menaxhimit te taskeve
+ ✅ Implementimi i funksionalitetit si shtimi, shfaqja dhe perfundimi i taskeve
 
-### Sfidat
-# 1️⃣ Zgjidhja e gabimeve dhe funksioneve të aplikacionit.
-# 2️⃣ Ruajtja e te dhenave ne file Task.txt pas mbylljess se programit
+## Sfidat
+ 1️⃣ Zgjidhja e gabimeve dhe funksioneve të aplikacionit.
+ 2️⃣ Ruajtja e te dhenave ne file Task.txt pas mbylljess se programit
