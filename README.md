@@ -1,11 +1,11 @@
 ### Programming-Exam-TaskManager
 
-1. Clone the repository:
+### 1. Clone the repository:
 
    git clone https://github.com/LeotrimIslami/Programming-Exam-TaskManager.git
    cd Programming-Exam-TaskManager/TaskManager
    
-  📌 Usage
+ ### 📌 Usage
 🔧 Build and Run the Application
 1️⃣ Open the Project in Visual Studio
 Launch Visual Studio and open the solution (.sln file).
