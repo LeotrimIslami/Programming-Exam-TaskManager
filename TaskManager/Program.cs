@@ -5,13 +5,15 @@ using System.IO;
 
 class Program
 {
+    // List to store tasks
     static List<TaskItem> tasks = new List<TaskItem>();
     static void Main(string[] args)
     {
-        LoadTasks();
+        LoadTasks();  // Load tasks from file
 
         while (true)
         {
+            // Display the main menu
             Console.WriteLine("- Task Manager - ");
             Console.WriteLine("1. Add Task");
             Console.WriteLine("2. Display Tasks");
@@ -20,6 +22,7 @@ class Program
             Console.Write("Choose an option: ");
             string choice = Console.ReadLine();
 
+            // Handle user's menu choice
             switch (choice)
             {
                 case "1":
@@ -27,7 +30,7 @@ class Program
                     break;
 
                     case "2":
-                    DisplayTasks();
+                    DisplayTasksWithColors();
                     break;  
 
                     case"3":
@@ -43,11 +46,26 @@ class Program
                     break;
             }
             Console.WriteLine("Press any key to continue...");
-            Console.ReadKey();
+            Console.ReadKey();    // Wait for user input
             Console.Clear();
         }
     }
 
+    // Get a valid category from user input
+    static string GetValidCategory()
+    {
+        while (true)
+        {
+            Console.Write("Enter category (Personal, Work, Study): ");
+            string category = Console.ReadLine().ToLower();
+            if (category == "personal" || category == "work" || category == "study")
+        {
+                return category;
+            }
+            Console.WriteLine("Invalid category! Please choose from Personal, Work, or Study.");
+        }
+    }
+    // Add a new task to the task list
     static void AddTask()
     {
         Console.Write("Enter title: ");
@@ -58,6 +76,7 @@ class Program
             return;
         }
 
+        // Get task details from user
         Console.Write("Enter description: ");
         string description = Console.ReadLine();
 
@@ -68,32 +87,58 @@ class Program
             return;
         }
 
+        string category = GetValidCategory();
+
+        // Add new task to the list
         tasks.Add(new TaskItem
         {
             Title = title,
             Description = description,
             DueDate = dueDate,
             IsCompleted = false,
-            Category = "Personal"
+            Category = category
         });
 
         Console.WriteLine("Task added successfully!");
     }
 
-    static void DisplayTasks()
+    // Display all tasks with color-coded categories
+    static void DisplayTasksWithColors()
     {
         if (tasks.Count == 0)
         {
             Console.WriteLine("No tasks available.");
             return;
         }
+
+        // Loop through tasks and display them with category-specific colors
         for (int i = 0; i < tasks.Count; i++)
         {
             var task = tasks[i];
-            Console.WriteLine($"{i}. Title {task.Title}, Due Date: {task.DueDate.ToShortDateString()}, Completed: {task.IsCompleted}");
+            switch (task.Category.ToLower())
+            {
+
+                case "personal":
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    break;
+                case "work":
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    break;
+                case "study":
+                    Console.ForegroundColor = ConsoleColor.Blue;
+                    break;
+                default:
+                    Console.ForegroundColor = ConsoleColor.White;
+                    break;
+            }
+
+            // Display task details
+            Console.WriteLine($"{i}. Title: {task.Title}, Due Date: {task.DueDate.ToShortDateString()}, Completed: {task.IsCompleted}, Category: {task.Category}");
+            Console.ResetColor();
         }
     }
 
+    // Mark a task as completed by its index
     static void MarkTaskCompleted()
     {
         Console.WriteLine("Enter the index of the task to mark as completed: ");
@@ -107,7 +152,11 @@ class Program
     }
 
 
+    // Define the file path to save and load tasks
     static string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", "..", "..", "tasks.txt");
+
+
+    // Save all tasks to a file
     static void SaveTasks()
     {
         using (StreamWriter writer = new StreamWriter(filePath))
@@ -120,6 +169,7 @@ class Program
         Console.WriteLine("Tasks saved successfully!");
     }
 
+    // Load tasks from a file
     static void LoadTasks()
     {
         if (File.Exists(filePath))
